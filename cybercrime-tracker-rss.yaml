@@ -1,0 +1,17 @@
+#this prototype will grab the IPs and title from the cybercrime-tracker rss feed
+
+
+
+attributes:
+    confidence: 50
+    direction: inbound
+    share_level: green
+    type: IPv4
+indicator:
+    regex: (IP: )(.*)(?=<\/description>)
+fields:
+    Title:
+        regex: (?=\[)(.*)(?=<\/description>)
+        transform: \1
+source_name: cybercrime-tracker
+url: https://cybercrime-tracker.net/rss.xml
